@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Aasman Darshan</title>
+      <link rel="stylesheet" href="/styles/main.css" />
+   </head>
+   <header>
+      <div class="navbar">
+         <div class="top-row">
+            <div class="website-icon">
+               <a href="/">
+               <img src="/images/website-icon.png" alt="website-icon" />
+               </a>
+               <div class="navbar-text">
+                  <h1>Welcome to the Aasman Darshan</h1>
+               </div>
+            </div>
+         </div>
+         <div class="nav-bottom">
+            <div class="nav-links">
+               <a href="/">Home</a>
+               <a href="#">Radar & Maps</a>
+               <a href="#">Severe Weather</a>
+               <a href="#">News</a>
+            </div>
+            <div class="time">
+               <% let now = new Date(); 
+                  let formatted = now.toLocaleString('en-IN',
+                  {
+                      weekday: 'short',
+                      day: 'numeric',
+                      month: 'short',
+                      hour: '2-digit',
+                      minute: '2-digit'
+                   });
+                  %> 
+               <%= formatted %> IST
+            </div>
+         </div>
+      </div>
+   </header>
+<main class="container">

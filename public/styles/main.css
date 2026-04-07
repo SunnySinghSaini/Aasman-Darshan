@@ -1,0 +1,209 @@
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: url("/images/bg-1.jpg") center center / cover no-repeat; */
+    z-index: -1;
+}
+
+@media (max-width:768px){
+    .bg {
+        position: absolute;
+    }
+}
+
+.navbar {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: aqua;
+}
+
+.navbar a {
+    text-decoration: none;
+    padding: 10px;
+}
+
+.top-row {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.website-icon {
+    width: 100%;
+    justify-content: left;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
+.navbar-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* perfect center */
+    font-size: large;
+    font-weight: bold;
+}
+
+.website-icon img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 100%;
+}
+.nav-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    width: 100%;
+}
+
+/* Footer CSS Starts */
+
+footer {
+    background: darkblue;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Menu Styling */
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.menu li a:hover {
+    color: #00adb5;
+}
+
+/* Social Icons */
+.social-icons {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.social-icons li a {
+    color: #fff;
+    font-size: 24px;
+    transition: 0.3s;
+}
+
+.social-icons li a:hover {
+    color: #00adb5;
+    transform: scale(1.2);
+}
+
+/* Copyright */
+.copyright {
+    font-size: 14px;
+    opacity: 0.7;
+}
+/* Footer CSS Ends */
+
+/* Contact form css starts */
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    min-height: 100vh;
+}
+
+/* Container (center form) */
+form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+}
+
+/* Inputs & Textarea */
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* Focus Effect */
+form input:focus,
+form textarea:focus {
+    border-color: #0d6efd;
+    outline: none;
+    box-shadow: 0 0 5px rgba(13,110,253,0.5);
+}
+
+/* Textarea */
+form textarea {
+    resize: none;
+    height: 120px;
+}
+
+/* Button */
+form button {
+    width: 100%;
+    padding: 12px;
+    background: #0d6efd;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Button Hover */
+form button:hover {
+    background: #084298;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    form {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+/* Contact form css end */
