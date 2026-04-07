@@ -207,3 +207,91 @@ form button:hover {
     }
 }
 /* Contact form css end */
+
+/* Body css starts */
+/* Background Section */
+.bg {
+    height: 100vh;
+    background: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b") no-repeat center center/cover;
+    position: relative;
+}
+
+/* Dark Overlay */
+.overlay {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Content */
+.content {
+    text-align: center;
+    color: #fff;
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* Heading */
+.content h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+/* Paragraph */
+.content p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Button Style */
+.btn {
+    padding: 12px 25px;
+    background: #0d6efd;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+/* Secondary Button */
+.btn.secondary {
+    background: transparent;
+    border: 2px solid #fff;
+}
+
+/* Hover Effects */
+.btn:hover {
+    background: #084298;
+}
+
+.btn.secondary:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .content h1 {
+        font-size: 32px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
+/* Body css end */
