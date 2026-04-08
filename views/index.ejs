@@ -1,6 +1,15 @@
 <%- include("partials/header.ejs") %>
-<h1>Weather in <%= location %></h1>
+<h3>Weather in <%= location %></h3>
 <div class="weather-container">
+    <div>
+        <form action="/submit-coordinates" method="POST">
+            <input type="number" name="lat" placeholder="Enter your Latitude" step="any" required>
+            <input type="number" name="lon" placeholder="Enter your Longitude" step="any" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
    <h2>Hourly Weather Forecast</h2>
    <% for(let i = 0; i <24; i++) { %>
    <div class="weather-card">

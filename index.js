@@ -10,13 +10,20 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"));
 
+// Get coordinates from user input
+app.post("/submit-coordinates", (req,res) => {
+    const lat =req.body.lat;
+    const lon = req.body.lon;
+    res.redirect(`/?lat=${lat}&lon=${lon}`);
+})
+
 // using axios to get data from weather api
 app.get("/" , async(req,res) => {
     try{
-        const lat =30.376424;
-        const lon =76.876448;
+        const lat =req.query.lat;
+        const lon =req.query.lon;
         // weather api
-        const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lat}&hourly=temperature_2m&timezone=auto`);
+        const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&timezone=auto`);
 
         // Reverse geocoding api
         const geoResponse = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`,
@@ -26,11 +33,11 @@ app.get("/" , async(req,res) => {
                 }
             }
         );
-        const locationName = geoResponse.data.address.city 
+        const locationName =geoResponse.data.display_name || geoResponse.data.address.city 
             || geoResponse.data.address.town 
             || geoResponse.data.address.village 
             || "Unknown Location";
-
+        // console.log(geoResponse.data.display_name);
         res.render("index.ejs", {
             time : response.data.hourly.time,
             temp : response.data.hourly.temperature_2m,
