@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
+import axios from "axios";
 
 const app = express();
 const port = 3000;
@@ -8,8 +9,40 @@ const port = 3000;
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"));
-app.get("/", (req,res) => {
-    res.render("index.ejs");
+
+// using axios to get data from weather api
+app.get("/" , async(req,res) => {
+    try{
+        const lat =30.376424;
+        const lon =76.876448;
+        // weather api
+        const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lat}&hourly=temperature_2m&timezone=auto`);
+
+        // Reverse geocoding api
+        const geoResponse = await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`,
+            {
+                headers: {
+                    "User-Agent": "Aasman Darshan"
+                }
+            }
+        );
+        const locationName = geoResponse.data.address.city 
+            || geoResponse.data.address.town 
+            || geoResponse.data.address.village 
+            || "Unknown Location";
+
+        res.render("index.ejs", {
+            time : response.data.hourly.time,
+            temp : response.data.hourly.temperature_2m,
+            location : locationName
+            
+        });
+        // console.log(response);
+    }
+    catch (error) {
+        console.error("Failed to make request: ", error.message);
+        res.status(500).send("Failed to fetch activity. Please try again.")
+    }
 })
 
 // About Us page 

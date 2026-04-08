@@ -10,7 +10,7 @@
   "author": "Sunny",
   "license": "ISC",
   "dependencies": {
-    "axiom": "^0.51.0",
+    "axios": "^1.14.0",
     "body-parser": "^2.2.2",
     "ejs": "^5.0.1",
     "express": "^5.2.1"
