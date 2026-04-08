@@ -1,6 +1,14 @@
 <%- include("partials/header.ejs") %>
-<h3>Weather in <%= location %></h3>
+
+<h3>
+    Weather in 
+    <%= locals.location ? location : "your area 🌍" %>
+</h3>
+
 <div class="weather-container">
+     <!-- FIRST TIME MESSAGE -->
+        <h2>Please enter coordinates to see weather 🌤️</h2>
+    <!-- FORM -->
     <div>
         <form action="/submit-coordinates" method="POST">
             <input type="number" name="lat" placeholder="Enter your Latitude" step="any" required>
@@ -9,21 +17,31 @@
         </form>
     </div>
 
+    <% if (locals.time && locals.temp) { %>
 
-   <h2>Hourly Weather Forecast</h2>
-   <% for(let i = 0; i <24; i++) { %>
-   <div class="weather-card">
-      <% 
-         const date = new Date(time[i]);
-         const indiaTime = date.toLocaleString("en-IN",{
-            hour:"2-digit",
-            minutes: "2-digit"
-         });
-         %>
-      <p><strong>Time:</strong> <%= indiaTime %></p>
-      <p><strong>Temperature:</strong> <%= temp[i] %> °C</p>
-   </div>
-   <% } %>
+        <h2>Hourly Weather Forecast</h2>
+
+        <% for(let i = 0; i < 24; i++) { %>
+            <div class="weather-card">
+
+                <% 
+                const date = new Date(time[i]);
+                const indiaTime = date.toLocaleString("en-IN", {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                });
+                %>
+
+                <p><strong>Time:</strong> <%= indiaTime %></p>
+                <p><strong>Temperature:</strong> <%= temp[i] %> °C</p>
+
+            </div>
+        <% } %>
+
+    <% } else { %>
+
+    <% } %>
+
 </div>
-</div>
+
 <%- include("partials/footer.ejs") %>

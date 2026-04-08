@@ -22,6 +22,10 @@ app.get("/" , async(req,res) => {
     try{
         const lat =req.query.lat;
         const lon =req.query.lon;
+        if(!lat && !lon){
+            return res.render("index.ejs");
+        }
+
         // weather api
         const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&timezone=auto`);
 
