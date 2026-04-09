@@ -22,6 +22,7 @@ app.get("/" , async(req,res) => {
     try{
         const lat =req.query.lat;
         const lon =req.query.lon;
+        // will check for user entered coordinates
         if(!lat && !lon){
             return res.render("index.ejs");
         }
